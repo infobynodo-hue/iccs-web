@@ -57,9 +57,15 @@ export default function Library() {
             >
               {/* Cover */}
               <div
-                className={`relative aspect-[3/4] bg-gradient-to-b ${resource.gradient} flex items-end p-5`}
+                className={`relative aspect-[3/4] bg-gradient-to-b ${resource.gradient} flex items-end`}
               >
-                <h4 className="font-fraunces text-[20px] font-medium text-white leading-tight">
+                {/* Dark overlay so title is always legible */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)' }}
+                  aria-hidden="true"
+                />
+                <h4 className="relative z-10 font-fraunces text-[20px] font-medium text-white leading-tight p-5">
                   {resource.coverTitle}
                 </h4>
               </div>

@@ -1,4 +1,8 @@
+'use client';
+
 // Membership tiers — three pricing plans with feature lists
+import AnimatedButton from '@/components/ui/AnimatedButton';
+
 const CheckIcon = ({ light = false }: { light?: boolean }) => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="flex-shrink-0">
     <circle cx="9" cy="9" r="8.5" stroke={light ? '#7FD0EE' : '#1FA9E0'} />
@@ -133,16 +137,13 @@ export default function Membership() {
                 ))}
               </ul>
 
-              <a
+              <AnimatedButton
                 href="#unirse"
-                className={`block text-center font-inter font-semibold text-[15px] py-3.5 rounded-full transition-colors ${
-                  tier.featured
-                    ? 'bg-azul text-white hover:bg-azul-light'
-                    : 'border border-tinta/20 text-tinta hover:border-tinta/40 hover:bg-tinta/4'
-                }`}
+                variant={tier.featured ? 'blue' : 'outline-featured'}
+                className="w-full text-[15px] py-3.5 rounded-full"
               >
                 {tier.cta}
-              </a>
+              </AnimatedButton>
             </div>
           ))}
         </div>

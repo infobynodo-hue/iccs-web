@@ -1,4 +1,8 @@
+'use client';
+
 // Final CTA — closing call to action with radial background decoration
+import AnimatedButton from '@/components/ui/AnimatedButton';
+
 export default function FinalCTA() {
   return (
     <section className="relative py-[160px] px-6 overflow-hidden" id="unirse">
@@ -25,18 +29,20 @@ export default function FinalCTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-          <a
+          <AnimatedButton
             href="#"
-            className="font-inter font-semibold text-[16px] bg-tinta text-hueso px-8 py-4 rounded-full hover:bg-tinta-2 transition-colors"
+            variant="primary"
+            className="text-[16px] px-8 py-4 rounded-full"
           >
             Únete a iCCS →
-          </a>
-          <a
+          </AnimatedButton>
+          <AnimatedButton
             href="#empresas"
-            className="font-inter font-medium text-[16px] border border-tinta/25 text-tinta px-8 py-4 rounded-full hover:border-tinta/45 hover:bg-tinta/4 transition-colors"
+            variant="outline"
+            className="font-medium text-[16px] px-8 py-4 rounded-full"
           >
             Solicitar demo institucional
-          </a>
+          </AnimatedButton>
         </div>
       </div>
     </section>

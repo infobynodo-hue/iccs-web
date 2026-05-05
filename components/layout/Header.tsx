@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,62 +39,48 @@ export default function Header() {
 
         {/* Desktop navigation */}
         <nav className="hidden lg:flex items-center gap-7" aria-label="Navegación principal">
-          <a
-            href="#membresia"
-            className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors"
-          >
+          <a href="#membresia" className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors">
             Membresía
           </a>
-          <a
-            href="#biblioteca"
-            className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors"
-          >
+          <a href="#biblioteca" className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors">
             Biblioteca
           </a>
-          <a
-            href="#conocimiento"
-            className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors"
-          >
+          <a href="#conocimiento" className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors">
             Conocimiento
           </a>
-          <a
-            href="#nosotros"
-            className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors"
-          >
+          <a href="#nosotros" className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors">
             Quiénes somos
           </a>
-          <a
-            href="#empresas"
-            className="font-inter text-[14px] font-semibold text-maritimo hover:text-maritimo/80 transition-colors"
-          >
+          <a href="#empresas" className="font-inter text-[14px] font-semibold text-maritimo hover:text-maritimo/80 transition-colors">
             Para empresas
           </a>
 
           {/* Divider */}
           <span className="w-px h-5 bg-tinta/15" aria-hidden="true" />
 
-          <a
-            href="#acceder"
-            className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors"
-          >
+          <a href="#acceder" className="font-inter text-[14px] font-medium text-tinta/75 hover:text-tinta transition-colors">
             Acceder
           </a>
-          <a
+          <AnimatedButton
             href="#unirse"
-            className="font-inter text-[14px] font-semibold bg-tinta text-hueso px-5 py-2.5 rounded-full hover:bg-tinta-2 transition-colors"
+            variant="primary"
+            className="text-[14px] px-5 py-2.5 rounded-full"
+            duration={3.5}
           >
             Únete a iCCS
-          </a>
+          </AnimatedButton>
         </nav>
 
         {/* Mobile: logo + CTA only */}
         <div className="flex items-center gap-3 lg:hidden">
-          <a
+          <AnimatedButton
             href="#unirse"
-            className="font-inter text-[13px] font-semibold bg-tinta text-hueso px-4 py-2 rounded-full"
+            variant="primary"
+            className="text-[13px] px-4 py-2 rounded-full"
+            duration={3.5}
           >
             Únete
-          </a>
+          </AnimatedButton>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-lg hover:bg-tinta/8 transition-colors"

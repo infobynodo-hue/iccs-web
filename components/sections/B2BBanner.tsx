@@ -1,5 +1,8 @@
+'use client';
+
 // B2B banner — enterprise services pitch with service pills
 import Image from 'next/image';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 const services = [
   'Editorial científica',
@@ -54,12 +57,13 @@ export default function B2BBanner() {
                 ))}
               </div>
 
-              <a
+              <AnimatedButton
                 href="#"
-                className="inline-flex items-center gap-2.5 font-inter font-semibold text-[15px] bg-azul text-white px-7 py-3.5 rounded-full hover:bg-azul-light transition-colors"
+                variant="blue"
+                className="gap-2.5 text-[15px] px-7 py-3.5 rounded-full"
               >
                 Conoce nuestros servicios B2B →
-              </a>
+              </AnimatedButton>
             </div>
 
             {/* Logo visual */}

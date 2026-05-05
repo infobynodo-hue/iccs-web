@@ -3,6 +3,7 @@
 // Hero section — split layout: brand statement + CTAs on the left, interactive globe on the right
 import { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import AnimatedButton from '@/components/ui/AnimatedButton';
 
 // Load globe only on client (canvas + WebGL)
 const GlobeIccs = dynamic(() => import('@/components/ui/GlobeIccs'), {
@@ -66,21 +67,23 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-9">
-              <a
+              <AnimatedButton
                 href="#unirse"
-                className="inline-flex items-center gap-2.5 font-inter font-semibold text-[15px] bg-tinta text-hueso px-7 py-3.5 rounded-full hover:bg-tinta-2 transition-colors"
+                variant="primary"
+                className="gap-2.5 text-[15px] px-7 py-3.5 rounded-full"
               >
                 Únete a iCCS
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
-              <a
+              </AnimatedButton>
+              <AnimatedButton
                 href="#pillars"
-                className="inline-flex items-center gap-2 font-inter font-medium text-[15px] border border-tinta/25 text-tinta px-7 py-3.5 rounded-full hover:border-tinta/50 hover:bg-tinta/4 transition-colors"
+                variant="outline"
+                className="gap-2 text-[15px] px-7 py-3.5 rounded-full font-medium"
               >
                 Conoce la plataforma
-              </a>
+              </AnimatedButton>
             </div>
 
             {/* Mini stats */}

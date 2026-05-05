@@ -74,6 +74,21 @@ body {
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* Infinite horizontal marquee for TrustBar */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Smooth card hover */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;

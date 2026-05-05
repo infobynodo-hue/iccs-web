@@ -18,13 +18,14 @@ export default function TrustBar() {
         className="absolute inset-0 w-full h-full pointer-events-none"
         color="#0E5C8C"
         background="transparent"
-        size={1.6}
-        minSize={0.4}
-        density={80}
-        speed={0.4}
-        opacity={0.45}
-        minOpacity={0.08}
-        opacitySpeed={1.2}
+        size={2}
+        minSize={0.6}
+        density={120}
+        speed={1.2}
+        minSpeed={0.4}
+        opacity={0.5}
+        minOpacity={0.1}
+        opacitySpeed={1.5}
       />
 
       <div className="relative z-10 max-w-[1280px] mx-auto">

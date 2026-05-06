@@ -172,11 +172,19 @@ export default function GlobeIccs({ className = '' }: { className?: string }) {
       ctx.save();
       ctx.scale(dpr, dpr);
 
+      // ── Clip ALL drawing strictly inside the globe circle ──
+      const globeRadius = w / 2 - 2;
+      ctx.beginPath();
+      ctx.arc(w / 2, h / 2, globeRadius, 0, Math.PI * 2);
+      ctx.clip();
+
       MARKERS.forEach(({ location: [lat, lng], size }) => {
         const pt = projectMarker(lat, lng, currentPhi, currentTheta, w, h);
         if (!pt) return;
-        const armLen = size * w * 0.52;
-        drawCross(ctx, pt.x, pt.y, armLen, pt.z * 2.8);
+        // Only draw markers clearly on the front hemisphere (z > 0.08)
+        if (pt.z < 0.08) return;
+        const armLen = size * w * 0.44;
+        drawCross(ctx, pt.x, pt.y, armLen, Math.min(1, pt.z * 2.2));
       });
 
       ctx.restore();

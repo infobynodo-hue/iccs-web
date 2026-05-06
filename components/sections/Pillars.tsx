@@ -2,6 +2,7 @@
 
 // Three pillars section — core platform value dimensions
 import { useReveal } from '@/lib/hooks/useReveal';
+import BlobCard from '@/components/ui/BlobCard';
 
 const pillars = [
   {
@@ -69,9 +70,11 @@ export default function Pillars() {
         {/* Pillars grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((pillar, i) => (
-            <div
+            <BlobCard
               key={i}
-              className="card-hover bg-white rounded-[20px] p-8 border border-[var(--line)] shadow-sm"
+              outerClassName="card-hover rounded-[20px] shadow-sm"
+              innerClassName="rounded-[16px] p-8"
+              duration={5 + i * 1.5}
             >
               <div className="w-12 h-12 rounded-2xl bg-azul/8 flex items-center justify-center text-azul mb-6">
                 {pillar.icon}
@@ -88,7 +91,7 @@ export default function Pillars() {
               >
                 {pillar.link}
               </a>
-            </div>
+            </BlobCard>
           ))}
         </div>
       </div>

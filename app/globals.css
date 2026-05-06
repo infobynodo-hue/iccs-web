@@ -74,6 +74,19 @@ body {
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* BlobCard — animated gradient border blob */
+@keyframes blob-iccs {
+  0%   { transform: translate(-100%, -100%); }
+  25%  { transform: translate(0%,   -100%); }
+  50%  { transform: translate(0%,    0%);   }
+  75%  { transform: translate(-100%, 0%);   }
+  100% { transform: translate(-100%, -100%); }
+}
+
+.blob-iccs {
+  animation: blob-iccs 6s linear infinite;
+}
+
 /* Infinite horizontal marquee for TrustBar */
 @keyframes marquee {
   0%   { transform: translateX(0); }

@@ -2,6 +2,7 @@
 
 // Membership tiers — three pricing plans with feature lists
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import BlobCard from '@/components/ui/BlobCard';
 
 const CheckIcon = ({ light = false }: { light?: boolean }) => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" className="flex-shrink-0">
@@ -87,63 +88,68 @@ export default function Membership() {
 
         {/* Tiers */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
-          {tiers.map((tier) => (
+          {tiers.map((tier, i) => (
+            /* Outer relative wrapper so badge can overflow the BlobCard */
             <div
               key={tier.name}
-              className={`relative rounded-[24px] p-8 ${
-                tier.featured
-                  ? 'bg-tinta text-hueso shadow-xl'
-                  : 'bg-white border border-[var(--line)] shadow-sm'
-              }`}
+              className="relative"
               style={tier.featured ? { transform: 'scale(1.04)' } : undefined}
             >
+              {/* Floating badge — above BlobCard overflow */}
               {tier.badge && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 font-mono text-[11px] uppercase tracking-widest bg-azul text-white px-4 py-1.5 rounded-full">
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 font-mono text-[11px] uppercase tracking-widest bg-azul text-white px-4 py-1.5 rounded-full whitespace-nowrap">
                   {tier.badge}
                 </span>
               )}
 
-              <span className={`font-mono text-[11px] uppercase tracking-widest ${tier.featured ? 'text-cielo/70' : 'text-tinta/40'}`}>
-                {tier.level}
-              </span>
-
-              <h3 className={`font-fraunces text-[26px] font-medium mt-2 ${tier.featured ? 'text-hueso' : 'text-tinta'}`}>
-                {tier.name}
-              </h3>
-
-              <div className="flex items-baseline gap-1.5 mt-4 mb-2">
-                <span className={`font-fraunces font-light ${tier.featured ? 'text-hueso' : 'text-tinta'} ${tier.price === 'A medida' ? 'text-[26px]' : 'text-[40px]'}`}>
-                  {tier.price}
-                </span>
-                {tier.period && (
-                  <span className={`font-inter text-[14px] ${tier.featured ? 'text-hueso/55' : 'text-tinta/50'}`}>
-                    {tier.period}
-                  </span>
-                )}
-              </div>
-
-              <p className={`font-inter text-[14px] leading-relaxed mb-7 ${tier.featured ? 'text-hueso/65' : 'text-tinta/55'}`}>
-                {tier.description}
-              </p>
-
-              <ul className="space-y-3 mb-8">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
-                    <CheckIcon light={tier.featured} />
-                    <span className={`font-inter text-[14px] ${tier.featured ? 'text-hueso/80' : 'text-tinta/70'}`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <AnimatedButton
-                href="#unirse"
-                variant={tier.featured ? 'blue' : 'outline-featured'}
-                className="w-full text-[15px] py-3.5 rounded-full"
+              <BlobCard
+                outerClassName="rounded-[24px] shadow-sm"
+                innerClassName={`rounded-[20px] p-8 ${tier.featured ? '' : ''}`}
+                dark={tier.featured}
+                duration={4.5 + i * 1.5}
               >
-                {tier.cta}
-              </AnimatedButton>
+                <span className={`font-mono text-[11px] uppercase tracking-widest ${tier.featured ? 'text-cielo/70' : 'text-tinta/40'}`}>
+                  {tier.level}
+                </span>
+
+                <h3 className={`font-fraunces text-[26px] font-medium mt-2 ${tier.featured ? 'text-hueso' : 'text-tinta'}`}>
+                  {tier.name}
+                </h3>
+
+                <div className="flex items-baseline gap-1.5 mt-4 mb-2">
+                  <span className={`font-fraunces font-light ${tier.featured ? 'text-hueso' : 'text-tinta'} ${tier.price === 'A medida' ? 'text-[26px]' : 'text-[40px]'}`}>
+                    {tier.price}
+                  </span>
+                  {tier.period && (
+                    <span className={`font-inter text-[14px] ${tier.featured ? 'text-hueso/55' : 'text-tinta/50'}`}>
+                      {tier.period}
+                    </span>
+                  )}
+                </div>
+
+                <p className={`font-inter text-[14px] leading-relaxed mb-7 ${tier.featured ? 'text-hueso/65' : 'text-tinta/55'}`}>
+                  {tier.description}
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3">
+                      <CheckIcon light={tier.featured} />
+                      <span className={`font-inter text-[14px] ${tier.featured ? 'text-hueso/80' : 'text-tinta/70'}`}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <AnimatedButton
+                  href="#unirse"
+                  variant={tier.featured ? 'blue' : 'outline-featured'}
+                  className="w-full text-[15px] py-3.5 rounded-full"
+                >
+                  {tier.cta}
+                </AnimatedButton>
+              </BlobCard>
             </div>
           ))}
         </div>

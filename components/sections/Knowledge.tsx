@@ -1,5 +1,8 @@
+'use client';
+
 // Knowledge section — featured article and secondary article stack
 import { articles } from '@/lib/data/articles';
+import BlobCard from '@/components/ui/BlobCard';
 
 export default function Knowledge() {
   const featured = articles.find((a) => a.featured)!;
@@ -26,21 +29,21 @@ export default function Knowledge() {
         {/* Articles grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
           {/* Featured article */}
-          <div className="card-hover bg-white rounded-[24px] overflow-hidden border border-[var(--line)] shadow-sm">
+          <BlobCard
+            outerClassName="card-hover rounded-[24px] shadow-sm"
+            innerClassName="rounded-[20px]"
+            duration={7}
+          >
             {/* Image placeholder */}
             <div className="aspect-[16/9] bg-gradient-to-br from-maritimo to-tinta flex items-end p-6">
-              <span className="font-inter text-[13px] text-white/50">
-                Imagen artículo destacado
-              </span>
+              <span className="font-inter text-[13px] text-white/50">Imagen artículo destacado</span>
             </div>
             <div className="p-8">
               <div className="flex items-center gap-3 mb-4">
                 <span className="font-mono text-[11px] uppercase tracking-wide bg-azul/10 text-maritimo px-3 py-1 rounded-full">
                   {featured.category}
                 </span>
-                <span className="font-mono text-[12px] text-tinta/40">
-                  {featured.date}
-                </span>
+                <span className="font-mono text-[12px] text-tinta/40">{featured.date}</span>
               </div>
               <h3 className="font-fraunces text-[28px] md:text-[32px] font-medium text-tinta leading-[1.2] mb-4">
                 {featured.title}
@@ -48,48 +51,43 @@ export default function Knowledge() {
               <p className="font-inter text-[15px] text-tinta/60 leading-relaxed mb-6">
                 {featured.excerpt}
               </p>
-              <a
-                href="#"
-                className="font-inter font-semibold text-[14px] text-maritimo hover:text-azul transition-colors"
-              >
+              <a href="#" className="font-inter font-semibold text-[14px] text-maritimo hover:text-azul transition-colors">
                 Leer artículo completo →
               </a>
             </div>
-          </div>
+          </BlobCard>
 
           {/* Secondary articles */}
           <div className="flex flex-col gap-5">
-            {secondary.map((article) => (
-              <a
+            {secondary.map((article, i) => (
+              <BlobCard
                 key={article.id}
-                href="#"
-                className="block bg-white rounded-[20px] p-6 border border-[var(--line)] shadow-sm hover:translate-x-1 transition-transform"
+                outerClassName="rounded-[20px] shadow-sm hover:translate-x-1 transition-transform"
+                innerClassName="rounded-[16px] p-6 cursor-pointer"
+                duration={4.5 + i}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-[11px] uppercase tracking-wide bg-azul/8 text-maritimo px-2.5 py-0.5 rounded-full">
-                    {article.category}
-                  </span>
-                  <span className="font-mono text-[11px] text-tinta/40">
-                    {article.date}
-                  </span>
-                </div>
-                <h4 className="font-fraunces text-[18px] font-medium text-tinta leading-snug mb-2">
-                  {article.title}
-                </h4>
-                <p className="font-inter text-[13px] text-tinta/55 leading-relaxed line-clamp-3">
-                  {article.excerpt}
-                </p>
-              </a>
+                <a href="#" className="block">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="font-mono text-[11px] uppercase tracking-wide bg-azul/8 text-maritimo px-2.5 py-0.5 rounded-full">
+                      {article.category}
+                    </span>
+                    <span className="font-mono text-[11px] text-tinta/40">{article.date}</span>
+                  </div>
+                  <h4 className="font-fraunces text-[18px] font-medium text-tinta leading-snug mb-2">
+                    {article.title}
+                  </h4>
+                  <p className="font-inter text-[13px] text-tinta/55 leading-relaxed line-clamp-3">
+                    {article.excerpt}
+                  </p>
+                </a>
+              </BlobCard>
             ))}
           </div>
         </div>
 
         {/* Footer CTA */}
         <div className="text-center mt-12">
-          <a
-            href="#"
-            className="font-inter font-semibold text-[15px] text-maritimo hover:text-azul transition-colors"
-          >
+          <a href="#" className="font-inter font-semibold text-[15px] text-maritimo hover:text-azul transition-colors">
             Ver todos los artículos →
           </a>
         </div>

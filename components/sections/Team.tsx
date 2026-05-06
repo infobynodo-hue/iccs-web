@@ -1,5 +1,8 @@
+'use client';
+
 // Team section — manifesto quote, stats, and member grid on dark background
 import { team } from '@/lib/data/team';
+import BlobCard from '@/components/ui/BlobCard';
 
 const stats = [
   { number: '+1.700', label: 'Profesionales activos' },
@@ -65,20 +68,19 @@ export default function Team() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {team.map((member, i) => (
-              <div
+              <BlobCard
                 key={member.name}
-                className="card-hover rounded-[20px] overflow-hidden border border-hueso/10"
+                outerClassName="card-hover rounded-[20px]"
+                innerClassName="rounded-[16px]"
+                dark={true}
+                duration={5 + i * 1.2}
               >
                 {/* Photo placeholder */}
-                <div
-                  className={`aspect-[4/3] bg-gradient-to-br ${gradients[i % gradients.length]} flex items-end p-5`}
-                >
-                  <span className="font-inter text-[12px] text-white/50">
-                    Foto {member.name}
-                  </span>
+                <div className={`aspect-[4/3] bg-gradient-to-br ${gradients[i % gradients.length]} flex items-end p-5`}>
+                  <span className="font-inter text-[12px] text-white/50">Foto {member.name}</span>
                 </div>
                 {/* Info */}
-                <div className="bg-tinta-2 p-5">
+                <div className="p-5">
                   <span className="font-mono text-[11px] uppercase tracking-widest text-cielo/60">
                     {member.tag}
                   </span>
@@ -89,7 +91,7 @@ export default function Team() {
                     {member.role}
                   </p>
                 </div>
-              </div>
+              </BlobCard>
             ))}
           </div>
         </div>

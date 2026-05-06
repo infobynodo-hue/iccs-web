@@ -1,5 +1,8 @@
+'use client';
+
 // Library section — resource catalog cards with cover visuals
 import { resources } from '@/lib/data/resources';
+import BlobCard from '@/components/ui/BlobCard';
 
 const tagColorMap = {
   blue: 'bg-azul/15 text-maritimo',
@@ -29,18 +32,12 @@ export default function Library() {
           </div>
           {/* Nav arrows */}
           <div className="flex items-center gap-3">
-            <button
-              aria-label="Anterior"
-              className="w-11 h-11 rounded-full border border-tinta/20 flex items-center justify-center text-tinta/60 hover:border-tinta/40 hover:text-tinta hover:bg-tinta/4 transition-colors"
-            >
+            <button aria-label="Anterior" className="w-11 h-11 rounded-full border border-tinta/20 flex items-center justify-center text-tinta/60 hover:border-tinta/40 hover:text-tinta hover:bg-tinta/4 transition-colors">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <button
-              aria-label="Siguiente"
-              className="w-11 h-11 rounded-full border border-tinta/20 flex items-center justify-center text-tinta/60 hover:border-tinta/40 hover:text-tinta hover:bg-tinta/4 transition-colors"
-            >
+            <button aria-label="Siguiente" className="w-11 h-11 rounded-full border border-tinta/20 flex items-center justify-center text-tinta/60 hover:border-tinta/40 hover:text-tinta hover:bg-tinta/4 transition-colors">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                 <path d="M7 4L12 9L7 14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -50,16 +47,15 @@ export default function Library() {
 
         {/* Resource cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {resources.map((resource) => (
-            <div
+          {resources.map((resource, i) => (
+            <BlobCard
               key={resource.title}
-              className="card-hover bg-white rounded-[20px] overflow-hidden border border-[var(--line)] shadow-sm"
+              outerClassName="card-hover rounded-[20px] shadow-sm"
+              innerClassName="rounded-[16px]"
+              duration={5 + i * 1.2}
             >
               {/* Cover */}
-              <div
-                className={`relative aspect-[3/4] bg-gradient-to-b ${resource.gradient} flex items-end`}
-              >
-                {/* Dark overlay so title is always legible */}
+              <div className={`relative aspect-[3/4] bg-gradient-to-b ${resource.gradient} flex items-end`}>
                 <div
                   className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
                   style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)' }}
@@ -88,12 +84,8 @@ export default function Library() {
                 </p>
                 <div className="flex items-center justify-between pt-4 border-t border-[var(--line)]">
                   <div>
-                    <span className="font-inter text-[15px] font-semibold text-tinta">
-                      {resource.price}
-                    </span>
-                    <span className="font-mono text-[11px] text-tinta/40 ml-2">
-                      {resource.pages}
-                    </span>
+                    <span className="font-inter text-[15px] font-semibold text-tinta">{resource.price}</span>
+                    <span className="font-mono text-[11px] text-tinta/40 ml-2">{resource.pages}</span>
                   </div>
                   <button
                     aria-label={`Ver ${resource.title}`}
@@ -105,16 +97,13 @@ export default function Library() {
                   </button>
                 </div>
               </div>
-            </div>
+            </BlobCard>
           ))}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-12">
-          <a
-            href="#biblioteca"
-            className="font-inter font-semibold text-[15px] text-maritimo hover:text-azul transition-colors"
-          >
+          <a href="#biblioteca" className="font-inter font-semibold text-[15px] text-maritimo hover:text-azul transition-colors">
             Ver biblioteca completa →
           </a>
         </div>

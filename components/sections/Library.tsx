@@ -18,7 +18,7 @@ export default function Library() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
           <div className="max-w-[560px]">
             <span className="inline-block font-mono text-[11px] uppercase tracking-widest text-azul bg-azul/10 border border-azul/15 px-3.5 py-1.5 rounded-full mb-5">
-              03 — Biblioteca
+              02 — Biblioteca
             </span>
             <h2 className="font-fraunces text-[36px] md:text-[44px] font-light text-tinta leading-[1.1]">
               Conocimiento que{' '}

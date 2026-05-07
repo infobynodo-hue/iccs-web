@@ -19,8 +19,8 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Pillars />
-        <Membership />
         <Library />
+        <Membership />
         <Testimonial />
         <Team />
         <Knowledge />

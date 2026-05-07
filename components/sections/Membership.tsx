@@ -74,7 +74,7 @@ export default function Membership() {
         {/* Section head */}
         <div className="text-center max-w-[600px] mx-auto mb-16">
           <span className="inline-block font-mono text-[11px] uppercase tracking-widest text-azul bg-azul/10 border border-azul/15 px-3.5 py-1.5 rounded-full mb-5">
-            02 — Membresía
+            03 — Membresía
           </span>
           <h2 className="font-fraunces text-[36px] md:text-[44px] font-light text-tinta leading-[1.1]">
             Tres niveles,{' '}

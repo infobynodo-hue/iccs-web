@@ -1,5 +1,8 @@
-// Site footer with brand column, navigation links, and legal info
+'use client';
+
+// Site footer — brand column, nav links, legal + TextHoverEffect hero background
 import Image from 'next/image';
+import { TextHoverEffect } from '@/components/ui/TextHoverEffect';
 
 const footerLinks = {
   plataforma: ['Membresía', 'Biblioteca', 'Conocimiento', 'Comunidad', 'Eventos'],
@@ -17,7 +20,37 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-tinta text-hueso">
-      <div className="max-w-[1280px] mx-auto px-6 pt-20 pb-8">
+
+      {/* ── TextHoverEffect banner ── */}
+      <div className="relative w-full overflow-hidden" style={{ height: '180px' }}>
+        {/* Radial gradient background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background:
+              'radial-gradient(125% 125% at 50% 10%, rgba(11,31,58,0.4) 50%, rgba(14,92,140,0.25) 100%)',
+          }}
+        />
+        {/* iCCS logo — faint top-left */}
+        <div className="absolute top-6 left-8 z-10 opacity-25">
+          <Image
+            src="/iccs-logo.png"
+            alt="iCCS"
+            width={80}
+            height={28}
+            className="h-7 w-auto object-contain brightness-0 invert"
+          />
+        </div>
+        {/* Big hover text */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="w-full max-w-[700px] h-full px-6">
+            <TextHoverEffect text="iCCS" duration={0.3} />
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main content ── */}
+      <div className="max-w-[1280px] mx-auto px-6 pt-16 pb-8">
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-12 pb-16 border-b border-hueso/10">
           {/* Brand column */}
@@ -46,10 +79,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.plataforma.map((link) => (
                 <li key={link}>
-                  <a
-                    href="#"
-                    className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors"
-                  >
+                  <a href="#" className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors">
                     {link}
                   </a>
                 </li>
@@ -65,10 +95,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.empresas.map((link) => (
                 <li key={link}>
-                  <a
-                    href="#"
-                    className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors"
-                  >
+                  <a href="#" className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors">
                     {link}
                   </a>
                 </li>
@@ -84,10 +111,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.iccs.map((link) => (
                 <li key={link}>
-                  <a
-                    href="#"
-                    className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors"
-                  >
+                  <a href="#" className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors">
                     {link}
                   </a>
                 </li>
@@ -103,10 +127,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link}>
-                  <a
-                    href="#"
-                    className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors"
-                  >
+                  <a href="#" className="font-inter text-[14px] text-hueso/65 hover:text-hueso transition-colors">
                     {link}
                   </a>
                 </li>
@@ -123,7 +144,6 @@ export default function Footer() {
               iccs.health
             </a>
           </p>
-          {/* Language selector */}
           <div className="flex items-center gap-1">
             {['ES', 'EN', 'PT'].map((lang, i) => (
               <span key={lang} className="flex items-center gap-1">

@@ -55,7 +55,7 @@ export default function Library() {
               duration={5 + i * 1.2}
             >
               {/* Cover */}
-              <div className={`relative aspect-[3/4] bg-gradient-to-b ${resource.gradient} flex items-end`}>
+              <div className="relative aspect-[3/4] flex items-end" style={{ background: resource.gradient }}>
                 <div
                   className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
                   style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)' }}

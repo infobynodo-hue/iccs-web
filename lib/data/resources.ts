@@ -7,7 +7,7 @@ export interface Resource {
   year: string;
   price: string;
   pages: string;
-  gradient: string;
+  gradient: string; // CSS gradient value for inline style
   tagColor: 'blue' | 'green' | 'purple';
 }
 
@@ -21,7 +21,7 @@ export const resources: Resource[] = [
     year: '2026',
     price: '35€',
     pages: '320 págs',
-    gradient: 'from-maritimo to-[#1F4D6F]',
+    gradient: 'linear-gradient(to bottom, #0E5C8C, #1F4D6F)',
     tagColor: 'blue',
   },
   {
@@ -33,7 +33,7 @@ export const resources: Resource[] = [
     year: '2026',
     price: '45€',
     pages: '280 págs',
-    gradient: 'from-[#2F8E7C] to-[#1F6055]',
+    gradient: 'linear-gradient(to bottom, #2F8E7C, #1F6055)',
     tagColor: 'green',
   },
   {
@@ -45,7 +45,7 @@ export const resources: Resource[] = [
     year: 'Online',
     price: '45€',
     pages: 'Online',
-    gradient: 'from-[#7C3AED] to-[#5B27B5]',
+    gradient: 'linear-gradient(to bottom, #7C3AED, #5B27B5)',
     tagColor: 'purple',
   },
   {
@@ -57,7 +57,7 @@ export const resources: Resource[] = [
     year: '2026',
     price: '25€',
     pages: 'PDF',
-    gradient: 'from-azul to-maritimo',
+    gradient: 'linear-gradient(to bottom, #1FA9E0, #0E5C8C)',
     tagColor: 'blue',
   },
 ];

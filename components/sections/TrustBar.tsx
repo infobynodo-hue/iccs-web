@@ -1,6 +1,7 @@
 'use client';
 
 // Trust bar — partner logos scrolling marquee with sparkle ambient effect
+import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 const Sparkles = dynamic(
@@ -8,10 +9,20 @@ const Sparkles = dynamic(
   { ssr: false }
 );
 
-const partners = ['iOncoCare', 'U. Nebrija', 'SAOM', 'GECP', 'SEHH', 'SEOM'];
+const partners = [
+  { name: 'Geistek Pharmaceuticals', src: '/logos/geistek.png' },
+  { name: 'Red Pet Iberia',      src: '/logos/redpet.png'     },
+  { name: 'TribeMD',             src: '/logos/tribemd.png'    },
+  { name: 'Med.IQ',              src: '/logos/mediq.png'      },
+  { name: 'Avalnet',             src: '/logos/avalnet.png'    },
+  { name: 'NetMD',               src: '/logos/netmd.png'      },
+  { name: 'Atribus',             src: '/logos/atribus.png'    },
+  { name: 'ASAP',                src: '/logos/asap.png'       },
+  { name: 'SAOM',                src: '/logos/saom.png'       },
+];
 
-// Duplicamos 4 veces para que el bucle sea perfectamente continuo
-const track = [...partners, ...partners, ...partners, ...partners];
+// Duplicamos 3 veces para que el bucle sea perfectamente continuo
+const track = [...partners, ...partners, ...partners];
 
 export default function TrustBar() {
   return (
@@ -40,21 +51,29 @@ export default function TrustBar() {
         <div
           className="relative overflow-hidden"
           style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+            maskImage: 'linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)',
           }}
         >
-          <div className="flex marquee-track gap-0">
-            {track.map((name, i) => (
+          <div className="flex items-center marquee-track gap-0">
+            {track.map((partner, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 flex items-center justify-center px-10 md:px-14"
+                className="flex-shrink-0 flex items-center gap-10 md:gap-14 px-10 md:px-14"
               >
-                {/* Dot separator before each item */}
-                <span className="w-1.5 h-1.5 rounded-full bg-maritimo/25 mr-10 md:mr-14 flex-shrink-0" />
-                <span className="font-fraunces text-[17px] font-medium text-tinta/40 hover:text-tinta/70 transition-colors whitespace-nowrap cursor-default select-none">
-                  {name}
-                </span>
+                {/* Dot separator */}
+                <span className="w-1 h-1 rounded-full bg-maritimo/20 flex-shrink-0" />
+                {/* Logo image */}
+                <div className="flex items-center justify-center h-9">
+                  <Image
+                    src={partner.src}
+                    alt={partner.name}
+                    width={120}
+                    height={36}
+                    className="object-contain h-full w-auto opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                    draggable={false}
+                  />
+                </div>
               </div>
             ))}
           </div>

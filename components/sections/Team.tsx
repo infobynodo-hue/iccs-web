@@ -1,6 +1,7 @@
 'use client';
 
 // Team section — manifesto quote, stats, and member grid on dark background
+import Image from 'next/image';
 import { team } from '@/lib/data/team';
 import BlobCard from '@/components/ui/BlobCard';
 
@@ -75,9 +76,17 @@ export default function Team() {
                 dark={true}
                 duration={5 + i * 1.2}
               >
-                {/* Photo placeholder */}
-                <div className={`aspect-[4/3] bg-gradient-to-br ${gradients[i % gradients.length]} flex items-end p-5`}>
-                  <span className="font-inter text-[12px] text-white/50">Foto {member.name}</span>
+                {/* Photo */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  {/* Subtle gradient overlay at bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#162333]/60 via-transparent to-transparent" />
                 </div>
                 {/* Info */}
                 <div className="p-5">

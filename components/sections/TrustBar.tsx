@@ -64,13 +64,13 @@ export default function TrustBar() {
                 {/* Dot separator */}
                 <span className="w-1 h-1 rounded-full bg-maritimo/20 flex-shrink-0" />
                 {/* Logo image */}
-                <div className="flex items-center justify-center h-9">
+                <div className="flex items-center justify-center h-14">
                   <Image
                     src={partner.src}
                     alt={partner.name}
-                    width={120}
-                    height={36}
-                    className="object-contain h-full w-auto opacity-40 grayscale hover:opacity-70 hover:grayscale-0 transition-all duration-300"
+                    width={180}
+                    height={56}
+                    className="object-contain h-full w-auto opacity-50 grayscale hover:opacity-80 hover:grayscale-0 transition-all duration-300"
                     draggable={false}
                   />
                 </div>
